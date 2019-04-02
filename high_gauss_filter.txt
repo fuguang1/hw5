@@ -1,0 +1,27 @@
+function [alpha] = high_gauss_filter(image,D0)
+I = imread(image);
+M = size(I,1);
+N = size(I,2);
+P = 2*M;
+Q = 2*N;
+all = 0.0;
+select = 0.0;
+I(P,Q) = 0;
+Fre_I = fft2(I);
+Fre_I = fftshift(Fre_I);
+for i = 1:P
+    for j = 1:Q
+        D(i,j) = sqrt((i-M)^2+(j-N)^2);
+        if D(i,j) <= D0
+            select = select+abs(Fre_I(i,j))^2;
+        end
+        all = all+abs(Fre_I(i,j))^2;
+        H(i,j) = 1-exp(-((D(i,j)^2)/(2*D0^2)));
+        Out_I(i,j) = Fre_I(i,j)*H(i,j);
+    end
+end
+alpha = (1-select/all)*100;
+Out_I = ifftshift(Out_I);
+I_out = ifft2(Out_I);
+I_out = uint8(real(I_out));
+imshow(I_out(1:M,1:N));title(['D0=',num2str(D0),' gauss']);

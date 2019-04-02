@@ -1,0 +1,10 @@
+clear all;
+clc;
+I_1 = imread('test3_corrupt.pgm');
+subplot(2,2,1);imshow(I_1);title('origin');
+subplot(2,2,2);
+laplace('test3_corrupt.pgm');
+I_2 = imread('test4 copy.bmp');
+subplot(2,2,3);imshow(I_2);title('origin');
+subplot(2,2,4);
+laplace('test4 copy.bmp');

@@ -1,0 +1,24 @@
+clear all;
+clc;
+figure(1);
+I_1 = imread('test3_corrupt.pgm');
+subplot(2,3,1);imshow(I_1);title('origin');
+subplot(2,3,2);
+unsharp('test3_corrupt.pgm',10)
+subplot(2,3,3);
+unsharp('test3_corrupt.pgm',30)
+subplot(2,3,5);
+unsharp('test3_corrupt.pgm',50)
+subplot(2,3,6);
+unsharp('test3_corrupt.pgm',70)
+figure(2);
+I_2 = imread('test4 copy.bmp');
+subplot(2,3,1);imshow(I_2);title('origin');
+subplot(2,3,2);
+unsharp('test4 copy.bmp',10)
+subplot(2,3,3);
+unsharp('test4 copy.bmp',30)
+subplot(2,3,5);
+unsharp('test4 copy.bmp',50)
+subplot(2,3,6);
+unsharp('test4 copy.bmp',70)

@@ -1,0 +1,45 @@
+clear all;
+clc;
+figure(1);
+I_1 = imread('test3_corrupt.pgm');
+subplot(2,3,[1,4]);imshow(I_1);title('origin');
+subplot(2,3,2);
+alpha1 = high_butter_filter('test3_corrupt.pgm',10,2)
+subplot(2,3,3);
+alpha2 = high_butter_filter('test3_corrupt.pgm',30,2)
+subplot(2,3,5);
+alpha3 = high_butter_filter('test3_corrupt.pgm',50,2)
+subplot(2,3,6);
+alpha4 = high_butter_filter('test3_corrupt.pgm',70,2)
+figure(2);
+I_2 = imread('test4 copy.bmp');
+subplot(2,3,[1,4]);imshow(I_2);title('origin');
+subplot(2,3,2);
+alpha5 = high_butter_filter('test4 copy.bmp',10,2)
+subplot(2,3,3);
+alpha6 = high_butter_filter('test4 copy.bmp',30,2)
+subplot(2,3,5);
+alpha7 = high_butter_filter('test4 copy.bmp',50,2)
+subplot(2,3,6);
+alpha8 = high_butter_filter('test4 copy.bmp',70,2)
+figure(3);
+subplot(2,3,[1,4]);imshow(I_1);title('origin');
+subplot(2,3,2);
+alpha9 = high_gauss_filter('test3_corrupt.pgm',10)
+subplot(2,3,3);
+alpha10 = high_gauss_filter('test3_corrupt.pgm',30)
+subplot(2,3,5);
+alpha11 = high_gauss_filter('test3_corrupt.pgm',50)
+subplot(2,3,6);
+alpha12 = high_gauss_filter('test3_corrupt.pgm',70)
+figure(4);
+subplot(2,3,[1,4]);imshow(I_2);title('origin');
+subplot(2,3,2);
+alpha13 = high_gauss_filter('test4 copy.bmp',10)
+subplot(2,3,3);
+alpha14 = high_gauss_filter('test4 copy.bmp',30)
+subplot(2,3,5);
+alpha15 = high_gauss_filter('test4 copy.bmp',50)
+subplot(2,3,6);
+alpha16 = high_gauss_filter('test4 copy.bmp',70)
+

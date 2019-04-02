@@ -1,0 +1,25 @@
+function laplace(image)
+I = imread(image);
+M = size(I,1);
+N = size(I,2);
+P = 2*M;
+Q = 2*N;
+I(P,Q) = 0;
+I = double(I);
+Fre_I = fft2(I);
+Fre_I = fftshift(Fre_I);
+for i = 1:P
+    for j = 1:Q
+        D(i,j) = sqrt((i-M)^2+(j-N)^2);
+        H(i,j) = -4*pi*pi*D(i,j)*D(i,j);
+        model(i,j) = Fre_I(i,j)*H(i,j);
+    end
+end
+model = ifftshift(model);
+lap = ifft2(model);
+lap = real(lap);
+lap = lap/max(max(lap));
+I = I/max(max(I));
+out = I-lap;
+out = out(1:M,1:N);
+imshow(out);title('laplace');
